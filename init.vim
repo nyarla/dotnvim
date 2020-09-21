@@ -26,6 +26,7 @@ set number
 set laststatus=2
 set showtabline=0
 set ambiwidth=double
+set scl=yes
 
 set completeopt-=preview
 
@@ -42,8 +43,6 @@ set mouse=a
 " =======
 "
 set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
-
-let g:loaded_netrw = 1
 let g:dein#install_github_api_token = system('grep password ~/.netrc | cut -d\  -f2 | sed -z "s/\n//"')
 
 
@@ -53,9 +52,13 @@ if dein#load_state('~/.local/share/dein')
   
   " file manager
   " ------------
-  call dein#add('Shougo/defx.nvim', {'rev': '1.5'})
-  call dein#add('kristijanhusak/defx-icons')
-  call dein#add('kristijanhusak/defx-git')
+  call dein#add('preservim/nerdtree', {'rev': '6.9.9'})
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('ryanoasis/vim-devicons')
+  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('liuchengxu/vista.vim')
 
   " auto-complete
   " ------------- 
@@ -114,49 +117,21 @@ augroup END
 
 " file manager
 " ------------
-let g:defx_icons_column_length = 2
-
-let s:defx_default_options = '-columns=indent:git:icon:icons:filename'
-let s:defx_default_vwidth = 30
-
-function! s:DefxOpenFile(filename)
-  if winlayout()[0] == 'leaf'
-    let l:width = winwidth(1) - s:defx_default_vwidth
-    execute 'vsplit' '+vertical\ resize\ ' . s:defx_default_vwidth
-    execute 'wincmd' 'l'
-    execute 'e' a:filename
-  elseif len(winlayout()[1]) == 2
-    execute 'wincmd l | rightbelow vsp' a:filename
-  else
-    execute 'e' a:filename
-  endif
-endfunction
-command! -nargs=1 DefxOpenFile call s:DefxOpenFile(<q-args>)
-
-function! s:DefxOpenDirectoryOnVimEnter()
-  if argc() == 1 && isdirectory(argv()[0]) && !exists('s:defx_state_is_stdin')
-    let l:cmd = join([s:defx_default_options,  argv()[0]], ' ')
-    execute 'Defx' l:cmd
+let g:NERDTreeGitStatusUseNerdFonts = 1
+function! s:openNERDTree()
+  if argc() == 1 && isdirectory(argv()[0]) && exists('s:is_stdin')
+    exec 'NERDTree' argv()[0]
   endif
 endfunction
 
-function! s:DefxConfigure()
-  nnoremap <silent><buffer><expr> <CR> 
-        \ defx#is_directory()
-        \ ? defx#do_action('open_tree', ['nested'])
-        \ : defx#do_action('open', [':DefxOpenFile'])
-  nnoremap <silent><buffer><expr> <2-LeftMouse> 
-        \ defx#is_directory()
-        \ ? defx#do_action('open_tree', ['nested'])
-        \ : defx#do_action('open', [':DefxOpenFile'])
-
-  nnoremap <silent><buffer><expr> I defx#do_action('toggle_ignored_files')
-endfunction
-
-augroup defx-autocmd
+augroup nerdtree
   autocmd!
-  autocmd FileType defx call s:DefxConfigure()
-  autocmd StdinReadPre * let s:defx_state_is_stdin = 1
-  autocmd VimEnter * call s:DefxOpenDirectoryOnVimEnter()
+  autocmd StdinReadPre * let s:is_stdin = 1
+  autocmd VimEnter * call s:openNERDTree()
 augroup END
 
+let g:vista_update_on_text_changed = 1
+let g:vista_default_executive = "vim_lsp"
+let g:vista#renderer#enable_icon = 1
+
+let g:airline_powerline_fonts = 1

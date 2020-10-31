@@ -115,6 +115,13 @@ augroup lsp-register
     \ })
 augroup END
 
+" auto-formatting
+" ---------------
+augroup neoformat
+  autocmd!
+  autocmd BufWritePre *.ts,*.js,*.md,*.yaml,*.json,*.css,*.scss undojoin | Neoformat
+augroup END
+
 " file manager
 " ------------
 let g:NERDTreeGitStatusUseNerdFonts = 1

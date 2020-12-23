@@ -50,25 +50,27 @@ if dein#load_state('~/.local/share/dein')
   call dein#begin('~/.local/share/dein', [expand('<sfile>')])
   call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
   
-  " file manager
+  " file manager TODO: chage to defx and lightline
   " ------------
-  call dein#add('preservim/nerdtree', {'rev': '6.9.9'})
+  call dein#add('preservim/nerdtree', {'rev': '6.9.11'})
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 
   call dein#add('vim-airline/vim-airline')
-  call dein#add('liuchengxu/vista.vim')
 
   " auto-complete
   " ------------- 
+  call dein#add('mattn/emmet-vim') 
+
   call dein#add('prabirshrestha/vim-lsp')
   call dein#add('mattn/vim-lsp-settings')
 
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('hrsh7th/deoplete-fname')
-  call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
+  " call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
+  call dein#add('Shougo/neco-syntax')
 
   " file
   " ----
@@ -101,10 +103,10 @@ colorscheme smyck
 
 " auto-complete
 " -------------
-let g:deoplete#enable_at_startup=1 
+let g:deoplete#enable_at_startup=1
 
 inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" : "\<Tab>"
+  \ pumvisible() ? "\<C-n>" : "\<Tab>"
 
 augroup lsp-register
   autocmd!
@@ -118,8 +120,26 @@ augroup END
 " auto-formatting
 " ---------------
 augroup neoformat
-  autocmd!
-  autocmd BufWritePre *.ts,*.js,*.md,*.yaml,*.json,*.css,*.scss undojoin | Neoformat
+  " JavaScript / TypeScript
+  autocmd BufWritePre *.ts undojoin | Neoformat
+  autocmd BufWritePre *.js undojoin | Neoformat
+
+  " CSS / SCSS
+  autocmd BufWritePre *.css undojoin | Neoformat
+  autocmd BufWritePre *.scss undojoin | Neoformat
+
+  " HTML / XML / Markdown
+  autocmd BufWritePre *.html undojoin | Neoformat
+  autocmd BufWritePre *.xml undojoin | Neoformat
+  autocmd BufWritePre *.md undojoin | Neoformat
+  
+  " JSON / YAML
+  autocmd BufWritePre *.json undojoin | Neoformat
+  autocmd BufWritePre *.yaml undojoin | Neoformat
+  autocmd BufWritePre *.ts undojoin | Neoformat
+
+  " Nix
+  autocmd BufWritePre *.nix undojoin | Neoformat
 augroup END
 
 " file manager
@@ -136,9 +156,5 @@ augroup nerdtree
   autocmd StdinReadPre * let s:is_stdin = 1
   autocmd VimEnter * call s:openNERDTree()
 augroup END
-
-let g:vista_update_on_text_changed = 1
-let g:vista_default_executive = "vim_lsp"
-let g:vista#renderer#enable_icon = 1
 
 let g:airline_powerline_fonts = 1

@@ -45,7 +45,6 @@ set mouse=a
 set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
 let g:dein#install_github_api_token = system('grep password ~/.netrc | cut -d\  -f2 | sed -z "s/\n//"')
 
-
 if dein#load_state('~/.local/share/dein')
   call dein#begin('~/.local/share/dein', [expand('<sfile>')])
   call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
@@ -62,15 +61,17 @@ if dein#load_state('~/.local/share/dein')
   " auto-complete
   " ------------- 
   call dein#add('mattn/emmet-vim') 
-
   call dein#add('prabirshrestha/vim-lsp')
   call dein#add('mattn/vim-lsp-settings')
-
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('lighttiger2505/deoplete-vim-lsp')
-  call dein#add('hrsh7th/deoplete-fname')
-  " call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
-  call dein#add('Shougo/neco-syntax')
+  call dein#add('prabirshrestha/asyncomplete.vim')
+  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+  call dein#add('prabirshrestha/asyncomplete-file.vim')
+  call dein#add('prabirshrestha/asyncomplete-emmet.vim')
+  if has('win32') || has('win64')
+    call dein#add('kitagry/asyncomplete-tabnine.vim', { 'build': 'powershell.exe .\install.ps1'  })
+  else
+    call dein#add('kitagry/asyncomplete-tabnine.vim', { 'build': './install.sh'  })
+  endif
 
   " file
   " ----
@@ -103,10 +104,51 @@ colorscheme smyck
 
 " auto-complete
 " -------------
-let g:deoplete#enable_at_startup=1
+let g:asyncomplete_auto_popup = 0
 
-inoremap <silent><expr> <Tab>
-  \ pumvisible() ? "\<C-n>" : "\<Tab>"
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : asyncomplete#force_refresh()
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+augroup asyncomplete
+  autocmd!
+  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'priority': 5,
+    \ 'blocklist': ['md'],
+    \ 'completor': function('asyncomplete#sources#file#completor'),
+    \ }))
+  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emmet#get_source_options({
+    \ 'name': 'emmet',
+    \ 'priority': 5,
+    \ 'whitelist': ['html', 'xml'],
+    \ 'completor': function('asyncomplete#sources#emmet#completor'),
+    \ }))
+  autocmd User call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+    \ 'name': 'omni',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['ts', 'js', 'css', 'scss', 'html', 'xml', 'md'],
+    \ 'completor': function('asyncomplete#sources#omni#completor'),
+    \ 'config': {
+    \   'show_source_kind': 1 " Add `o` kind label to `'menu'`
+    \ }
+    \ }))
+ autocmd User call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
+    \ 'name': 'tabnine',
+    \ 'allowlist': ['*'],
+    \ 'priority': 1,
+    \ 'completor': function('asyncomplete#sources#tabnine#completor'),
+    \ 'config': {
+    \   'line_limit': 1000,
+    \   'max_num_result': 15,
+    \  },
+    \ }))
+augroup END
 
 augroup lsp-register
   autocmd!
@@ -140,6 +182,11 @@ augroup neoformat
 
   " Nix
   autocmd BufWritePre *.nix undojoin | Neoformat
+
+  " C / C++
+  autocmd BufWritePre *.c undojoin | Neoformat
+  autocmd BufWritePre *.h undojoin | Neoformat
+  autocmd BufWritePre *.cc undojoin | Neoformat
 augroup END
 
 " file manager

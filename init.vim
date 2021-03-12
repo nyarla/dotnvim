@@ -60,6 +60,7 @@ if dein#load_state('~/.local/share/dein')
 
   " auto-complete
   " ------------- 
+  call dein#add('Shougo/neco-syntax')
   call dein#add('mattn/emmet-vim') 
   call dein#add('prabirshrestha/vim-lsp')
   call dein#add('mattn/vim-lsp-settings')
@@ -67,6 +68,8 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
   call dein#add('prabirshrestha/asyncomplete-file.vim')
   call dein#add('prabirshrestha/asyncomplete-emmet.vim')
+  call dein#add('yami-beta/asyncomplete-omni.vim')
+  call dein#add('prabirshrestha/asyncomplete-necosyntax.vim')
   if has('win32') || has('win64')
     call dein#add('kitagry/asyncomplete-tabnine.vim', { 'build': 'powershell.exe .\install.ps1'  })
   else
@@ -104,90 +107,92 @@ colorscheme smyck
 
 " auto-complete
 " -------------
-let g:asyncomplete_auto_popup = 0
+let g:asyncomplete_auto_popup = 1
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : asyncomplete#force_refresh()
+inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
-augroup asyncomplete
-  autocmd!
-  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'priority': 5,
-    \ 'blocklist': ['md'],
-    \ 'completor': function('asyncomplete#sources#file#completor'),
-    \ }))
-  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emmet#get_source_options({
-    \ 'name': 'emmet',
-    \ 'priority': 5,
-    \ 'whitelist': ['html', 'xml'],
-    \ 'completor': function('asyncomplete#sources#emmet#completor'),
-    \ }))
-  autocmd User call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-    \ 'name': 'omni',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': ['ts', 'js', 'css', 'scss', 'html', 'xml', 'md'],
-    \ 'completor': function('asyncomplete#sources#omni#completor'),
-    \ 'config': {
-    \   'show_source_kind': 1 " Add `o` kind label to `'menu'`
-    \ }
-    \ }))
- autocmd User call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
-    \ 'name': 'tabnine',
-    \ 'allowlist': ['*'],
-    \ 'priority': 1,
-    \ 'completor': function('asyncomplete#sources#tabnine#completor'),
-    \ 'config': {
-    \   'line_limit': 1000,
-    \   'max_num_result': 15,
-    \  },
-    \ }))
-augroup END
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+  \ 'name': 'file',
+  \ 'blocklist': ['markdown'],
+  \ 'completor': function('asyncomplete#sources#file#completor'),
+  \ }))
 
-augroup lsp-register
-  autocmd!
-  autocmd User lsp_setup call lsp#register_server({
-    \ 'name': 'rnix-lsp',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'rnix-lsp']},
-    \ 'whitelist': ['nix'],
-    \ })
-augroup END
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emmet#get_source_options({
+  \ 'name': 'emmet',
+  \ 'allowlist': ['html', 'xml'],
+  \ 'completor': function('asyncomplete#sources#emmet#completor'),
+  \ }))
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+  \ 'name': 'omni',
+  \ 'allowlist': ['*'],
+  \ 'blocklist': ['markdown'],
+  \ 'completor': function('asyncomplete#sources#omni#completor'),
+  \ 'config': {
+  \   'show_source_kind': 1,
+  \ }
+  \ }))
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
+  \ 'name': 'tabnine',
+  \ 'allowlist': ['*'],
+  \ 'blocklist': ['markdown'],
+  \ 'completor': function('asyncomplete#sources#tabnine#completor'),
+  \ 'config': {
+  \   'line_limit': 1000,
+  \   'max_num_result': 15,
+  \  },
+  \ }))
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
+  \ 'name': 'necosyntax',
+  \ 'allowlist': ['*'],
+  \ 'blocklist': ['markdown'],
+  \ 'completor': function('asyncomplete#sources#necosyntax#completor'),
+  \ }))
+
+autocmd User lsp_setup call lsp#register_server({
+  \ 'name': 'rnix-lsp',
+  \ 'cmd': {server_info->[&shell, &shellcmdflag, 'rnix-lsp']},
+  \ 'allowlist': ['nix'],
+  \ })
+
 
 " auto-formatting
 " ---------------
-augroup neoformat
-  " JavaScript / TypeScript
-  autocmd BufWritePre *.ts undojoin | Neoformat
-  autocmd BufWritePre *.js undojoin | Neoformat
 
-  " CSS / SCSS
-  autocmd BufWritePre *.css undojoin | Neoformat
-  autocmd BufWritePre *.scss undojoin | Neoformat
+" JavaScript / TypeScript
+autocmd BufWritePre *.ts undojoin | Neoformat
+autocmd BufWritePre *.js undojoin | Neoformat
 
-  " HTML / XML / Markdown
-  autocmd BufWritePre *.html undojoin | Neoformat
-  autocmd BufWritePre *.xml undojoin | Neoformat
-  autocmd BufWritePre *.md undojoin | Neoformat
-  
-  " JSON / YAML
-  autocmd BufWritePre *.json undojoin | Neoformat
-  autocmd BufWritePre *.yaml undojoin | Neoformat
-  autocmd BufWritePre *.ts undojoin | Neoformat
+" CSS / SCSS
+autocmd BufWritePre *.css undojoin | Neoformat
+autocmd BufWritePre *.scss undojoin | Neoformat
 
-  " Nix
-  autocmd BufWritePre *.nix undojoin | Neoformat
+" HTML / XML / Markdown
+autocmd BufWritePre *.html undojoin | Neoformat
+autocmd BufWritePre *.xml undojoin | Neoformat
+autocmd BufWritePre *.md undojoin | Neoformat
 
-  " C / C++
-  autocmd BufWritePre *.c undojoin | Neoformat
-  autocmd BufWritePre *.h undojoin | Neoformat
-  autocmd BufWritePre *.cc undojoin | Neoformat
-augroup END
+" JSON / YAML
+autocmd BufWritePre *.json undojoin | Neoformat
+autocmd BufWritePre *.yaml undojoin | Neoformat
+autocmd BufWritePre *.ts undojoin | Neoformat
+
+" Nix
+autocmd BufWritePre *.nix undojoin | Neoformat
+
+" Perl
+autocmd BufWrite *.pl undojoin | Neoformat
+autocmd BufWrite *.pm undojoin | Neoformat
+autocmd BufWrite cpanfile undojoin | Neoformat
+
+" C / C++
+autocmd BufWritePre *.c undojoin | Neoformat
+autocmd BufWritePre *.h undojoin | Neoformat
+"autocmd BufWritePre *.cpp undojoin | Neoformat
+"autocmd BufWritePre *.hpp undojoin | Neoformat
+autocmd BufWritePre *.cc undojoin | Neoformat
 
 " file manager
 " ------------

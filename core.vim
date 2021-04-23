@@ -28,6 +28,7 @@ set ambiwidth=single
 set scl=yes
 
 set completeopt-=preview
+set termguicolors
 
 " Files
 " -----

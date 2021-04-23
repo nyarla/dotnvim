@@ -85,9 +85,9 @@ endfunction
 
 function! LightlineBufIcon()
   let colors = {
-        \ 'go':     [ '#09F', '#000', 'blue',   'black' ],
-        \ 'vim':    [ '#9CF', '#000', 'green',  'black' ],
-        \ 'spvm':   [ '#09F', '#000', 'blue',   'black' ],
+        \ 'go':     [ '#0099FF', '#000000', 'blue',   'black' ],
+        \ 'vim':    [ '#99CCFF', '#000000', 'green',  'black' ],
+        \ 'spvm':   [ '#0099FF', '#000000', 'blue',   'black' ],
         \ }
 
   let fname = expand('%:t')
@@ -100,9 +100,9 @@ function! LightlineBufIcon()
   if &filetype !=# ''
     let ft   = &filetype
     let icon  = WebDevIconsGetFileTypeSymbol()
-    let color = get(colors, ft, ['#FFF', '#000', 'white', 'black'])
+    let color = get(colors, ft, ['#FFFFFF', '#000000', 'white', 'black'])
 
-    if icon
+    if icon !=# ''
       execute printf("hi LightlineBufIcon ctermfg=%s ctermbg=%s guifg=%s guibg=%s", color[2], color[3], color[0], color[1])
       return icon
     endif
@@ -116,6 +116,10 @@ function! LightlineTabName(n)
   let winnr = tabpagewinnr(a:n)
   let fname = expand('#' . buflist[winnr - 1] . ':t')
 
+  if fname =~ 'todo\.md$'
+    return LightlineDate() . ' (' . system('echo -n $(LC_ALL=ja_JP.UTF-8 date +%a)') . ')'
+  endif
+
   return LightlineBufName(fname)
 endfunction
 
@@ -124,8 +128,12 @@ function! LightlineTabState(n)
   let winnr = tabpagewinnr(a:n)
   let fname = LightlineBufName(expand('#' . buflist[winnr - 1] . ':t'))
   
-if fname ==# "NERDTree"
+  if fname ==# "NERDTree"
     return LightlineIcon('nerdtree')
+  endif
+
+  if fname =~ 'todo\.md$'
+    return LightlineIcon('calendar')
   endif
 
   if gettabwinvar(a:n, winnr, '&readonly')
@@ -146,31 +154,31 @@ let s:p.tabline.left = [
 let s:p.tabline.right = copy(s:p.tabline.left)
 
 let s:p.tabline.tabsel = [
-      \   [ '#000', '#0CF', 'black', 'blue' ],
+      \   [ '#000000', '#00CCFF', 'black', 'blue' ],
       \ ]
 
-let s:p.normal.left[0]    = ['#000', '#0CF', 'black', 'blue']
-let s:p.inactive.left[0]  = ['#000', '#666', 'black', 'gray']
-let s:p.insert.left[0]    = ['#000', '#9c0', 'black', 'green']
-let s:p.replace.left[0]   = ['#000', '#F6A', 'black', 'red']
-let s:p.visual.left[0]    = ['#000', '#0CC', 'black', 'cyan']
+let s:p.normal.left[0]    = ['#000000', '#00CCFF', 'black', 'blue']
+let s:p.inactive.left[0]  = ['#000000', '#666666', 'black', 'gray']
+let s:p.insert.left[0]    = ['#000000', '#99CC00', 'black', 'green']
+let s:p.replace.left[0]   = ['#000000', '#FF6633', 'black', 'red']
+let s:p.visual.left[0]    = ['#000000', '#00CCCC', 'black', 'cyan']
 
-let s:p.normal.left[1]    = ['#FFF', '#000', 'white', 'black']
-let s:p.inactive.left[1]  = ['#666', '#000', 'gray',  'black']
-let s:p.insert.left[1]    = ['#FFF', '#000', 'white', 'black']
-let s:p.replace.left[1]   = ['#FFF', '#000', 'white', 'black']
-let s:p.visual.left[1]    = ['#FFF', '#000', 'white', 'black']
+let s:p.normal.left[1]    = ['#FFFFFF', '#000000', 'white', 'black']
+let s:p.inactive.left[1]  = ['#666666', '#000000', 'gray',  'black']
+let s:p.insert.left[1]    = ['#FFFFFF', '#000000', 'white', 'black']
+let s:p.replace.left[1]   = ['#FFFFFF', '#000000', 'white', 'black']
+let s:p.visual.left[1]    = ['#FFFFFF', '#000000', 'white', 'black']
 
 
-hi TablineLabel ctermfg=White ctermbg=Black
-hi TablineIconCal ctermfg=Yellow ctermbg=Black
-hi TablineIconClose ctermfg=Red ctermbg=Black
-hi TablineIconHost ctermfg=Green ctermbg=Black
-hi TablineIconNew ctermfg=White ctermbg=Black
-hi TablineIconUname ctermfg=Blue ctermbg=Black
+hi TablineLabel ctermfg=White ctermbg=Black guifg=#F9F9F9 guibg=#000000
+hi TablineIconCal ctermfg=Yellow ctermbg=Black guifg=#FFCC33 guibg=#000000
+hi TablineIconClose ctermfg=Red ctermbg=Black guifg=#FF6633 guibg=#000000
+hi TablineIconHost ctermfg=Green ctermbg=Black guifg=#CCFF00 guibg=#000000
+hi TablineIconNew ctermfg=White ctermbg=Black guifg=#F9F9F9 guibg=#000000
+hi TablineIconUname ctermfg=Blue ctermbg=Black guifg=#00CCFF guibg=#000000
 
-hi LightlineLabel ctermfg=White ctermbg=Black
-hi LightlineBufIcon ctermfg=White ctermbg=Black
+hi LightlineLabel ctermfg=White ctermbg=Black guifg=#F9F9F9 guibg=#000000
+hi LightlineBufIcon ctermfg=White ctermbg=Black guifg=#F9F9F9 guibg=#000000
 
 " Widgets
 " -------

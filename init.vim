@@ -9,3 +9,4 @@ source ~/.config/nvim/auto-format.vim
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/terminal.vim
 source ~/.config/nvim/open-manager.vim
+source ~/.config/nvim/todo-markdown.vim

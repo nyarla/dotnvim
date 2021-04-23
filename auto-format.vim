@@ -15,7 +15,7 @@ autocmd BufWritePre *.scss undojoin | Neoformat
 " ---------------------
 autocmd BufWritePre *.html undojoin | Neoformat
 autocmd BufWritePre *.xml undojoin | Neoformat
-autocmd BufWritePre *.md undojoin | Neoformat
+" autocmd BufWritePre *.md undojoin | Neoformat
 
 " JSON / YAML
 " -----------
@@ -40,3 +40,7 @@ autocmd BufWritePre *.h undojoin | Neoformat
 "autocmd BufWritePre *.cpp undojoin | Neoformat
 "autocmd BufWritePre *.hpp undojoin | Neoformat
 autocmd BufWritePre *.cc undojoin | Neoformat
+
+" Go
+" --
+autocmd BufWritePre *.go undojoin | Neoformat

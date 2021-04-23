@@ -18,3 +18,43 @@ tnoremap <silent><C-t>\| <C-\><C-n>:botright vsplit<CR>:terminal<CR>
 nnoremap <silent><C-t>- <Esc>:botright split<CR>:terminal<CR>
 inoremap <silent><C-t>- <Esc>:botright split<CR>:terminal<CR>
 tnoremap <silent><C-t>- <C-\><C-n>:botright split<CR>:terminal<CR>
+
+nnoremap <silent><C-t>C <Esc>:tabnew<CR>
+inoremap <silent><C-t>C <Esc>:tabnew<CR>
+tnoremap <silent><C-t>C <C-\><C-n>:tabnew<CR>
+
+nnoremap <silent><C-t>1 <Esc>1gt
+inoremap <silent><C-t>1 <Esc>1gt
+tnoremap <silent><C-t>1 <C-\><C-n>1gt
+
+nnoremap <silent><C-t>2 <Esc>2gt
+inoremap <silent><C-t>2 <Esc>2gt
+tnoremap <silent><C-t>2 <C-\><C-n>2gt
+
+nnoremap <silent><C-t>3 <Esc>3gt
+inoremap <silent><C-t>3 <Esc>3gt
+tnoremap <silent><C-t>3 <C-\><C-n>3gt
+
+nnoremap <silent><C-t>4 <Esc>4gt
+inoremap <silent><C-t>4 <Esc>4gt
+tnoremap <silent><C-t>4 <C-\><C-n>4gt
+
+nnoremap <silent><C-t>5 <Esc>5gt
+inoremap <silent><C-t>5 <Esc>5gt
+tnoremap <silent><C-t>5 <C-\><C-n>5gt
+
+nnoremap <silent><C-t>6 <Esc>6gt
+inoremap <silent><C-t>6 <Esc>6gt
+tnoremap <silent><C-t>6 <C-\><C-n>6gt
+
+nnoremap <silent><C-t>7 <Esc>7gt
+inoremap <silent><C-t>7 <Esc>7gt
+tnoremap <silent><C-t>7 <C-\><C-n>7gt
+
+nnoremap <silent><C-t>8 <Esc>8gt
+inoremap <silent><C-t>8 <Esc>8gt
+tnoremap <silent><C-t>8 <C-\><C-n>8gt
+
+nnoremap <silent><C-t>9 <Esc>9gt
+inoremap <silent><C-t>9 <Esc>9gt
+tnoremap <silent><C-t>9 <C-\><C-n>9gt

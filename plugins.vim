@@ -48,12 +48,13 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('delphinus/vim-firestore')
   call dein#add('LnL7/vim-nix')
   call dein#add('nyarla/vim-syntax-spvm')
+  call dein#add('plasticboy/vim-markdown')
 
   call dein#add('sbdchd/neoformat')
 
   " interface
   " ---------
-  call dein#add('dim13/smyck.vim')
+  " call dein#add('dim13/smyck.vim')
 
   " dein
   " ---- 
@@ -64,7 +65,18 @@ endif
 syntax on
 filetype on
 filetype plugin indent on
-colorscheme smyck
+colorscheme base16-kalaclista
 
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
+
+let g:vim_markdown_fenced_languages = [
+      \ 'bash=sh',
+      \ 'css=css', 
+      \ 'nix=nix', 
+      \ 'scss=scss',
+      \ ]
+
+let g:vim_markdown_new_list_item_indent = 2

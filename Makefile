@@ -15,7 +15,7 @@ cache:
 
 vimrc:
 	test -d ~/.config || mkdir -p ~/.config
-	ln -sf ~/local/dotnvim ~/.config/nvim
+	test -d ~/.config/nvim || ln -sf ~/local/dotnvim ~/.config/nvim
 	test -e ~/.vim || ln -sf ~/local/dotnvim ~/.vim
 	test -e ~/.vimrc || ln -sf ~/local/dotnvim/init.vim ~/.vimrc
 

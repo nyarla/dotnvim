@@ -1,27 +1,43 @@
 if has('nvim')
   autocmd TermOpen * set nonumber | startinsert
+
+  tnoremap <silent><C-t>q <C-\><C-n>:exit<CR>
+  tnoremap <silent><C-t>x <C-\><C-n>
+
+  nnoremap <silent><C-t>c <Esc>:tabnew<CR>:terminal<CR>
+  inoremap <silent><C-t>c <Esc>:tabnew<CR>:terminal<CR>
+  tnoremap <silent><C-t>c <C-\><C-n>:tabnew<CR>:terminal<CR>
+
+  nnoremap <silent><C-t>\| <Esc>:botright vsplit<CR>:terminal<CR>
+  inoremap <silent><C-t>\| <Esc>:botright vsplit<CR>:terminal<CR>
+  tnoremap <silent><C-t>\| <C-\><C-n>:botright vsplit<CR>:terminal<CR>
+
+  nnoremap <silent><C-t>- <Esc>:botright split<CR>:terminal<CR>
+  inoremap <silent><C-t>- <Esc>:botright split<CR>:terminal<CR>
+  tnoremap <silent><C-t>- <C-\><C-n>:botright split<CR>:terminal<CR>
 else
-  " TODO
+  autocmd TerminalOpen * if &buftype ==# 'terminal' | normal i | endif
+
+  tnoremap <silent><C-t>q <C-\><C-n>:exit<CR>
+  tnoremap <silent><C-t>x <C-\><C-n>
+
+  nnoremap <silent><C-t>c <Esc>:tabnew<CR>:terminal ++curwin<CR>
+  inoremap <silent><C-t>c <Esc>:tabnew<CR>:terminal ++curwin<CR>
+  tnoremap <silent><C-t>c <C-\><C-n>:tabnew<CR>:terminal ++curwin<CR>
+
+  nnoremap <silent><C-t>\| <Esc>:botright vsplit<CR>:terminal ++curwin<CR>
+  inoremap <silent><C-t>\| <Esc>:botright vsplit<CR>:terminal ++curwin<CR>
+  tnoremap <silent><C-t>\| <C-\><C-n>:botright vsplit<CR>:terminal ++curwin<CR>
+
+  nnoremap <silent><C-t>- <Esc>:botright split<CR>:terminal ++curwin<CR>
+  inoremap <silent><C-t>- <Esc>:botright split<CR>:terminal ++curwin<CR>
+  tnoremap <silent><C-t>- <C-\><C-n>:botright split<CR>:terminal ++curwin<CR>
+
 endif
 
-tnoremap <silent><C-t>q <C-\><C-n>:exit<CR>
-tnoremap <silent><C-t>x <C-\><C-n>
-
-nnoremap <silent><C-t>c <Esc>:tabnew<CR>:terminal<CR>
-inoremap <silent><C-t>c <Esc>:tabnew<CR>:terminal<CR>
-tnoremap <silent><C-t>c <C-\><C-n>:tabnew<CR>:terminal<CR>
-
-nnoremap <silent><C-t>\| <Esc>:botright vsplit<CR>:terminal<CR>
-inoremap <silent><C-t>\| <Esc>:botright vsplit<CR>:terminal<CR>
-tnoremap <silent><C-t>\| <C-\><C-n>:botright vsplit<CR>:terminal<CR>
-
-nnoremap <silent><C-t>- <Esc>:botright split<CR>:terminal<CR>
-inoremap <silent><C-t>- <Esc>:botright split<CR>:terminal<CR>
-tnoremap <silent><C-t>- <C-\><C-n>:botright split<CR>:terminal<CR>
-
-nnoremap <silent><C-t>C <Esc>:tabnew<CR>
-inoremap <silent><C-t>C <Esc>:tabnew<CR>
-tnoremap <silent><C-t>C <C-\><C-n>:tabnew<CR>
+nnoremap <silent><C-t>n <Esc>:tabnew<CR>
+inoremap <silent><C-t>n <Esc>:tabnew<CR>
+tnoremap <silent><C-t>n <C-\><C-n>:tabnew<CR>
 
 nnoremap <silent><C-t>1 <Esc>1gt
 inoremap <silent><C-t>1 <Esc>1gt

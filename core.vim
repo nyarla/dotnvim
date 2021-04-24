@@ -24,7 +24,7 @@ syntax enable
 set number
 set laststatus=2
 set showtabline=2
-set ambiwidth=single
+set ambiwidth=double
 set scl=yes
 
 set completeopt-=preview

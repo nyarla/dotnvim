@@ -86,7 +86,7 @@ endfunction
 function! LightlineBufIcon()
   let colors = {
         \ 'go':     [ '#0099FF', '#000000', 'blue',   'black' ],
-        \ 'vim':    [ '#99CCFF', '#000000', 'green',  'black' ],
+        \ 'vim':    [ '#CCFF00', '#000000', 'green',  'black' ],
         \ 'spvm':   [ '#0099FF', '#000000', 'blue',   'black' ],
         \ }
 
@@ -204,8 +204,8 @@ let g:lightline = {
   \   'date': "%#TablineIconCal#%{LightlineIcon('calendar')} %#TablineLabel#%{LightlineDate()}",
   \   'hostname': "%#TablineIconHost#%{LightlineIcon('host')} %#TablineLabel#%{LightlineHost()}",
   \   'uname': "%#TablineIconUname#%{LightlineIcon('uname')} %#TablineLabel#%{LightlineUser()}",
-  \   'close': "%#TablineIconClose#%999X%{LightlineIcon('close')}  ",
-  \   'open': "%#TablineIconNew#%@LightlineNewTab@ %{LightlineIcon('new')}%T",
+  \   'close': "%#TablineIconClose#%999X%{LightlineIcon('close')} ",
+  \   'open': "%#TablineIconNew#%@LightlineNewTab@%{LightlineIcon('new')}%T",
   \   'bufState': "%{LightlineBufState()}",
   \   'bufFn': "%#LightlineBufIcon#%{LightlineBufIcon()} %#LightlineLabel#%{LightlineBufFn()}",
   \ },

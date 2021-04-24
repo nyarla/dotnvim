@@ -16,18 +16,18 @@ function! EnableTodoMarkdown()
   syn match todoMarkdownListItem /\(\s*\)-\s[^\n\[\]]\+\n/
 
   hi todoMarkdownLabel cterm=underline
-  hi todoMarkdownPrefix ctermfg=Cyan cterm=none
-  hi todoMarkdownCheckBox ctermfg=Yellow
-  hi todoMarkdownCheckedBox ctermfg=Blue
-  hi todoMarkdownDate ctermfg=Green
+  hi todoMarkdownPrefix ctermfg=Cyan cterm=none guifg=#00CCCC
+  hi todoMarkdownCheckBox ctermfg=Yellow guifg=#FFCC33
+  hi todoMarkdownCheckedBox ctermfg=Blue guifg=#00CCFF
+  hi todoMarkdownDate ctermfg=Green guifg=#CCFF00
 
-  hi todoMarkdownAM1 ctermfg=Blue
-  hi todoMarkdownAM2 ctermfg=Yellow
-  hi todoMarkdownPM1 ctermfg=Cyan
-  hi todoMarkdownPM2 ctermfg=Red
-  hi todoMarkdownDAY ctermfg=Magenta
+  hi todoMarkdownAM1 ctermfg=Blue guifg=#00CCFF
+  hi todoMarkdownAM2 ctermfg=Yellow guifg=#FFCC33
+  hi todoMarkdownPM1 ctermfg=Cyan guifg=#00CCCC
+  hi todoMarkdownPM2 ctermfg=Red guifg=#FF6633
+  hi todoMarkdownDAY ctermfg=Magenta guifg=#CC99CC
 
-  hi todoMarkdownDoneItem ctermfg=gray cterm=strikethrough
+  hi todoMarkdownDoneItem ctermfg=gray cterm=strikethrough guifg=#CCCCCC gui=strikethrough
 
   function! FoldText()
     let line = getline(v:foldstart)

@@ -149,7 +149,7 @@ let s:colorscheme = '16color'
 let s:p = g:lightline#colorscheme#{s:colorscheme}#palette
 
 let s:p.tabline.left = [
-      \   [ '#FFF', '#000', 'white', 'black' ],
+      \   [ '#FFFFFF', '#000000', 'white', 'black' ],
       \ ]
 let s:p.tabline.right = copy(s:p.tabline.left)
 

@@ -43,8 +43,11 @@ set mouse=a
 " -------------
 if ! has('nvim')
   " https://qiita.com/kefir_/items/c725731d33de4d8fb096
-  if has("vim_starting") && !has('gui_running') && has('vertsplit')
+  if 0 && has("vim_starting") && !has('gui_running') && has('vertsplit') 
     function! EnableVsplitMode()
+      if &buftype ==# "terminal"
+        return
+      endif
       let &t_CS = "y"
       let &t_ti = &t_ti . "\e[?6;69h"
       let &t_te = "\e[?6;69l\e[999H" . &t_te

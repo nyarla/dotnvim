@@ -10,7 +10,6 @@ function! s:openNeoVim()
     else
       exec 'set nonumber'
       exec 'terminal! ++curwin'
-      exec 'normal i'
     endif
   elseif argc() == 1 && isdirectory(argv()[0]) && exists('s:is_stdin')
     exec 'NERDTree' argv()[0]

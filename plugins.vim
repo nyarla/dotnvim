@@ -11,6 +11,10 @@ let g:dein#install_github_api_token = system('grep password ~/.netrc | cut -d\  
 if dein#load_state('~/.local/share/dein')
   call dein#begin('~/.local/share/dein', [expand('<sfile>')])
   call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   
   " file manager TODO: chage to defx and lightline
   " ------------

@@ -3,9 +3,15 @@
 
 function! s:openNeoVim()
   if argc() == 0
-    exec 'set nonumber'
-    exec 'terminal'
-    exec 'startinsert'
+    if has('nvim')
+      exec 'set nonumber'
+      exec 'terminal'
+      exec 'startinsert'
+    else
+      exec 'set nonumber'
+      exec 'terminal! ++curwin'
+      exec 'normal i'
+    endif
   elseif argc() == 1 && isdirectory(argv()[0]) && exists('s:is_stdin')
     exec 'NERDTree' argv()[0]
   endif

@@ -32,15 +32,35 @@ function! LightlineIcon(icon)
 endfunction
 
 function! LightlineDate()
-  return system("echo -n $(date '+%Y-%m-%d')")
+  if has('win32') || has('win64')
+    return trim(system("coreutils date +%Y-%m-%d"))
+  else
+    return trim(system("date +%Y-%m-%d"))
+  endif
+endfunction
+
+function! LightlineDateJa()
+  if has('win32') || has('win64')
+    return trim(system("coreutils env LC_ALL=ja_JP.UTF-8 coreutils date '+%Y-%m-%d (%a)'"))
+  else
+    return trim(system("date '+%Y-%m-%d (%a)'"))
+  endif
 endfunction
 
 function! LightlineHost()
-  return system("echo -n $(hostname)")
+  if has('win32') || has('win64')
+    return trim(system("coreutils hostname"))
+  else
+    return trim(system("hostname"))
+  endif
 endfunction
 
 function! LightlineUser()
-  return system('echo -n $USER')
+  if has('win32') || has('win64')
+    return trim(system("coreutils whoami"))
+  else
+    return trim(system("whoami"))
+  endif
 endfunction
 
 function! LightlineNewTab(idx, count, button, mod)
@@ -117,7 +137,7 @@ function! LightlineTabName(n)
   let fname = expand('#' . buflist[winnr - 1] . ':t')
 
   if fname =~ 'todo\.md$'
-    return LightlineDate() . ' (' . system('echo -n $(LC_ALL=ja_JP.UTF-8 date +%a)') . ')'
+    return g:staticinfo.date_ja 
   endif
 
   return LightlineBufName(fname)
@@ -197,13 +217,20 @@ let s:modemap   = {
       \ 't'       : LightlineIcon('terminal') . ' TERMINAL',
       \ }
 
+let g:staticinfo = {
+      \ 'date': LightlineDate(),
+      \ 'date_ja': LightlineDateJa(),
+      \ 'hostname': LightlineHost(),
+      \ 'user': LightlineUser(),
+      \ }
+
 let g:lightline = {
   \ 'colorscheme': s:colorscheme,
   \ 
   \ 'component': {
-  \   'date': "%#TablineIconCal#%{LightlineIcon('calendar')} %#TablineLabel#%{LightlineDate()}",
-  \   'hostname': "%#TablineIconHost#%{LightlineIcon('host')} %#TablineLabel#%{LightlineHost()}",
-  \   'uname': "%#TablineIconUname#%{LightlineIcon('uname')} %#TablineLabel#%{LightlineUser()}",
+  \   'date': "%#TablineIconCal#%{LightlineIcon('calendar')} %#TablineLabel#%{g:staticinfo.date}",
+  \   'hostname': "%#TablineIconHost#%{LightlineIcon('host')} %#TablineLabel#%{g:staticinfo.hostname}",
+  \   'uname': "%#TablineIconUname#%{LightlineIcon('uname')} %#TablineLabel#%{g:staticinfo.user}",
   \   'close': "%#TablineIconClose#%999X%{LightlineIcon('close')} ",
   \   'open': "%#TablineIconNew#%@LightlineNewTab@%{LightlineIcon('new')}%T",
   \   'bufState': "%{LightlineBufState()}",

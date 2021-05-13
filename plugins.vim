@@ -1,16 +1,30 @@
-" Plugins with dein
+let g:base16_shell_path="~/local/dotnvim/colors"
+syntax on
+colorscheme base16-kalaclista" Plugins with dein
 " =================
 
 " enable dein
 " -----------
-set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
-let g:dein#install_github_api_token = system('grep password ~/.netrc | cut -d\  -f2 | sed -z "s/\n//"')
+let s:state = 0
+if has('win32') || has('win64')
+  set runtimepath+=~/AppData/Local/dein/repos/github.com/Shougo/dein.vim
+  let s:state=dein#load_state('~/AppData/Local/dein')
+else
+  set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
+  let g:dein#install_github_api_token = system('grep password ~/.netrc | cut -d\  -f2 | sed -z "s/\n//"')
+  let s:state=dein#load_state('~/.local/share/dein')
+endif
 
 " load plugins
 " ------------
-if dein#load_state('~/.local/share/dein')
-  call dein#begin('~/.local/share/dein', [expand('<sfile>')])
-  call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
+if s:state
+  if has('win32') || has('win64')
+    call dein#begin('~/AppData/Local/dein', [expand('<sfile>')])
+    call dein#add('~/AppData/Local/dein/repos/github.com/Shougo/dein.vim')
+  else
+    call dein#begin('~/.local/share/dein', [expand('<sfile>')])
+    call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
+  endif
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -18,7 +32,7 @@ if dein#load_state('~/.local/share/dein')
   
   " file manager TODO: chage to defx and lightline
   " ------------
-  call dein#add('preservim/nerdtree', {'rev': '6.9.11'})
+  call dein#add('preservim/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
@@ -66,11 +80,13 @@ if dein#load_state('~/.local/share/dein')
   call dein#save_state()
 endif
 
+let g:base16_shell_path="~/local/dotnvim/colors"
 syntax on
-filetype on
-filetype plugin indent on
 colorscheme base16-kalaclista
 
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
 let g:vim_markdown_folding_disabled = 1

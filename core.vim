@@ -32,8 +32,13 @@ set termguicolors
 
 " Files
 " -----
-set directory=~/.cache/nvim/swap
-set backupdir=~/.cache/nvim/backup
+if has('win32')
+  exec printf('set directory=%s/AppData/Local/Temp/nvim/swap', $HOME)
+  exec printf('set backupdir=%s/AppData/Local/Temp/nvim/backup', $HOME)
+else
+  set directory=~/.cache/nvim/swap
+  set backupdir=~/.cache/nvim/backup
+endif
 
 " Device
 " ------
@@ -41,13 +46,10 @@ set mouse=a
 
 " Hack for vim8
 " -------------
-if ! has('nvim')
+if ! has('nvim') && ! has('win32')
   " https://qiita.com/kefir_/items/c725731d33de4d8fb096
-  if 0 && has("vim_starting") && !has('gui_running') && has('vertsplit') 
+  if has("vim_starting") && !has('gui_running') && has('vertsplit') 
     function! EnableVsplitMode()
-      if &buftype ==# "terminal"
-        return
-      endif
       let &t_CS = "y"
       let &t_ti = &t_ti . "\e[?6;69h"
       let &t_te = "\e[?6;69l\e[999H" . &t_te

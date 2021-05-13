@@ -16,7 +16,6 @@ if has('nvim')
   inoremap <silent><C-t>- <Esc>:botright split<CR>:terminal<CR>
   tnoremap <silent><C-t>- <C-\><C-n>:botright split<CR>:terminal<CR>
 else
-
   tnoremap <silent><C-t>q <C-\><C-n>:exit<CR>
   tnoremap <silent><C-t>x <C-\><C-n>
 

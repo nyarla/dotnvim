@@ -1,23 +1,20 @@
 " Open manager
 " ============
 
-function! s:openNeoVim()
+function! s:openVim()
   if argc() == 0
     if has('nvim')
       exec 'set nonumber'
       exec 'terminal'
       exec 'startinsert'
-    else
-      exec 'set nonumber'
-      exec 'terminal! ++curwin'
     endif
   elseif argc() == 1 && isdirectory(argv()[0]) && exists('s:is_stdin')
     exec 'NERDTree' argv()[0]
   endif
 endfunction
 
-augroup open-neovim
+augroup open-vim
   autocmd!
   autocmd StdinReadPre * let s:is_stdin = 1
-  autocmd VimEnter * call s:openNeoVim()
+  autocmd VimEnter * call s:openVim()
 augroup END

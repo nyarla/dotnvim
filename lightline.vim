@@ -241,3 +241,6 @@ let g:lightline = {
   \ 'tablinne_separator': copy(s:separator),
   \ }
 
+if ! has('nvim')
+  let g:lightline.tabline.left[0] = ['tabs']
+endif

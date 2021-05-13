@@ -31,6 +31,7 @@ autocmd BufWritePre *.nix undojoin | Neoformat
 " ----
 autocmd BufWrite *.pl undojoin | Neoformat
 autocmd BufWrite *.pm undojoin | Neoformat
+autocmd BufWrite *.t undojoin | Neoformat
 autocmd BufWrite cpanfile undojoin | Neoformat
 
 " C / C++

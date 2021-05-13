@@ -15,7 +15,7 @@ function! EnableTodoMarkdown()
   syn match todoMarkdownTaskItem /\(\s*\)-\s*\[ \]\s*[^\n]\+\n/
   syn match todoMarkdownListItem /\(\s*\)-\s[^\n\[\]]\+\n/
 
-  hi todoMarkdownLabel cterm=underline
+  hi todoMarkdownLabel cterm=underline gui=underline
   hi todoMarkdownPrefix ctermfg=Cyan cterm=none guifg=#00CCCC
   hi todoMarkdownCheckBox ctermfg=Yellow guifg=#FFCC33
   hi todoMarkdownCheckedBox ctermfg=Blue guifg=#00CCFF

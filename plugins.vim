@@ -69,7 +69,6 @@ if s:state
   call dein#add('LnL7/vim-nix')
   call dein#add('nyarla/vim-syntax-spvm')
   call dein#add('plasticboy/vim-markdown')
-  call dein#add('PProvost/vim-ps1')
 
   call dein#add('sbdchd/neoformat')
 

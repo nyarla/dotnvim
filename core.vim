@@ -30,7 +30,10 @@ set ambiwidth=double
 set scl=yes
 
 set completeopt-=preview
-set termguicolors
+
+if ! has('gui_running')
+  set termguicolors
+endif
 
 " Files
 " -----
@@ -42,4 +45,4 @@ else
   set backupdir=~/.cache/nvim/backup
 endif
 
-
+autocmd BufRead,BufNewFile *.ps1 set ft=ps1

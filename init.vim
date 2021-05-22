@@ -7,10 +7,10 @@ set fileencoding=utf-8
 scriptencoding utf-8
 
 if has('win32') || has('win64')
-  let g:dotnvim="$HOME/AppData/Local/dotnvim"
+  let g:dotnvim="C:/Users/nyarla/AppData/Local/dotnvim"
   set shell=cmd.exe
 else
-  let g:dotnvim="$HOME/local/dotnvim"
+  let g:dotnvim="/home/nyarla/local/dotnvim"
   set shell=sh
 endif
 
@@ -24,9 +24,7 @@ execute printf("source %s/%s", g:dotnvim, 'open-manager.vim')
 execute printf("source %s/%s", g:dotnvim, 'todo-markdown.vim')
 
 if has('win32') || has('win64')
-  let g:dotnvim="$HOME/AppData/Local/dotnvim"
-  set shell=~/scoop/apps/pwsh/current/pwsh.exe
+  set shell=C:/Users/nyarla/scoop/apps/pwsh/current/pwsh.exe
 else
-  let g:dotnvim="$HOME/local/dotnvim"
   set shell=zsh
 endif

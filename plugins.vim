@@ -1,6 +1,5 @@
-let g:base16_shell_path="~/local/dotnvim/colors"
 syntax on
-colorscheme base16-kalaclista" Plugins with dein
+colorscheme base16-kalaclista
 " =================
 
 " enable dein
@@ -25,6 +24,9 @@ if s:state
     call dein#begin('~/.local/share/dein', [expand('<sfile>')])
     call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
   endif
+
+  call dein#add('wsdjeg/dein-ui.vim')
+  
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -67,6 +69,7 @@ if s:state
   call dein#add('LnL7/vim-nix')
   call dein#add('nyarla/vim-syntax-spvm')
   call dein#add('plasticboy/vim-markdown')
+  call dein#add('PProvost/vim-ps1')
 
   call dein#add('sbdchd/neoformat')
 
@@ -80,7 +83,9 @@ if s:state
   call dein#save_state()
 endif
 
-let g:base16_shell_path="~/local/dotnvim/colors"
+if ! (has('win32') || has('win64'))
+  let g:base16_shell_path="~/local/dotnvim/colors"
+endif
 syntax on
 colorscheme base16-kalaclista
 

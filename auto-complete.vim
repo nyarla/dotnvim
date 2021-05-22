@@ -54,3 +54,4 @@ autocmd User lsp_setup call lsp#register_server({
   \ 'cmd': {server_info->[&shell, &shellcmdflag, 'rnix-lsp']},
   \ 'allowlist': ['nix'],
   \ })
+

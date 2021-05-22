@@ -33,7 +33,7 @@ endfunction
 
 function! LightlineDate()
   if has('win32') || has('win64')
-    return trim(system("coreutils date +%Y-%m-%d"))
+    return trim(system("coreutils.exe date +%Y-%m-%d"))
   else
     return trim(system("date +%Y-%m-%d"))
   endif
@@ -41,7 +41,7 @@ endfunction
 
 function! LightlineDateJa()
   if has('win32') || has('win64')
-    return trim(system("coreutils env LC_ALL=ja_JP.UTF-8 coreutils date '+%Y-%m-%d (%a)'"))
+    return trim(system("coreutils.exe date '+%Y-%m-%d (%a)'"))
   else
     return trim(system("date '+%Y-%m-%d (%a)'"))
   endif
@@ -49,7 +49,7 @@ endfunction
 
 function! LightlineHost()
   if has('win32') || has('win64')
-    return trim(system("coreutils hostname"))
+    return trim(system("coreutils.exe hostname"))
   else
     return trim(system("hostname"))
   endif
@@ -57,7 +57,7 @@ endfunction
 
 function! LightlineUser()
   if has('win32') || has('win64')
-    return trim(system("coreutils whoami"))
+    return trim(system("coreutils.exe whoami"))
   else
     return trim(system("whoami"))
   endif

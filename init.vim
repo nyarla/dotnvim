@@ -143,7 +143,7 @@ set scl=yes
 
 " guifont
 " -------
-if g:nvy == 1
+if exists("g:nvy") && g:nvy == 1
   set guifont=MyricaM\ M:h14
 endif
 
@@ -687,7 +687,7 @@ function! OpenVim()
       exec 'terminal'
       exec 'startinsert'
     endif
-  elseif argc() == 1 && isdirectory(argv[0]) && exists('s:is_stdin')
+  elseif argc() == 1 && isdirectory(argv()[0]) && exists('s:is_stdin')
     exec 'NERDTree' argv()[0]
   endif
 endfunction

@@ -566,6 +566,30 @@ endif
 
 " auto-format
 " -----------
+
+if s:isWindows
+  function! SwitchToCmd()
+    set shell=cmd.exe
+    set shellquote= shellpipe=>%s\ 2>&1 shellxquote="
+    set shellcmdflag=/s\ /c
+    set shellredir=>%s\ 2>&1
+  endfunction
+
+  function! SwitchToPosh()
+    set shell=pwsh.exe
+    set shellquote= shellpipe=\| shellxquote=
+    set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+    set shellredir=\|\ Out-File\ -Encoding\ UTF8
+  endfunction
+
+  augroup auto-format-windows
+    autocmd!
+    autocmd BufWritePre * call SwitchToCmd()
+    autocmd BufWritePost * call SwitchToPosh()
+  augroup END
+
+endif
+
 augroup auto-format
   autocmd!
   autocmd BufWritePre *.c undojoin | Neoformat

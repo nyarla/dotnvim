@@ -411,6 +411,10 @@ set autoindent
 " -------
 set backspace=indent,eol,start
 
+" basic
+vnoremap <silent>zs :sort<CR>
+vnoremap <silent>zS :sort!<CR>
+
 " auto-complete
 inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -673,7 +677,6 @@ function! EnableTodoMarkdown()
   nnoremap <silent><C-Space> :call ToggleDone()<CR>
   nnoremap <silent>zu zxggVGzO
   vnoremap <silent>zl :s/\(\s*\)-\s/\1- [ ] /<CR>:noh<CR>
-  vnoremap <silent>zs :sort<CR>
   set nofoldenable
 endfunction
 

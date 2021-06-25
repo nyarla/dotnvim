@@ -289,7 +289,7 @@ function! LightlineGetBufferState()
   let label = LightlineGetBufferName(name)
 
   if label ==# "NERDTree"
-    return LightlineGetIconSymbol('nerdtree') . ' ' . label
+    return LightlineGetIconSymbol('nerdtree') . ' ' . label . ''
   endif
 
   return lightline#mode()
@@ -301,7 +301,7 @@ function! LightlineGetTabName(n)
   let name = expand('#'. list[winnr - 1] . ':t')
 
   if name =~ 'todo\.md'
-    return s:lightlineStaticInfo.date_weekday
+    return g:lightlineStaticInfo.date_weekday
   endif
  
   return LightlineGetBufferName(name)
@@ -342,7 +342,7 @@ let s:lightlineModeMap = {
 
 let g:lightlineStaticInfo = {
   \ 'date': GetISODate(),
-  \ 'date_weekday': GetISODate() . ' ' . GetWeekDay(),
+  \ 'date_weekday': GetISODate() . ' (' . GetWeekDay() . ')',
   \ 'hostname': GetHostname(),
   \ 'name': GetName(),
   \ }
@@ -410,6 +410,10 @@ set autoindent
 " keybind
 " -------
 set backspace=indent,eol,start
+
+" basic
+vnoremap <silent>zs :sort<CR>
+vnoremap <silent>zS :sort!<CR>
 
 " auto-complete
 inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -697,7 +701,6 @@ function! EnableTodoMarkdown()
   nnoremap <silent><C-Space> :call ToggleDone()<CR>
   nnoremap <silent>zu zxggVGzO
   vnoremap <silent>zl :s/\(\s*\)-\s/\1- [ ] /<CR>:noh<CR>
-  vnoremap <silent>zs :sort<CR>
   set nofoldenable
 endfunction
 

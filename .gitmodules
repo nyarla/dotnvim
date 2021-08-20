@@ -1,0 +1,81 @@
+[submodule "pack/file-manager/opt/fern"]
+	path = pack/file_manager/start/fern
+	url = https://github.com/lambdalisue/fern.vim
+[submodule "pack/file-manager/opt/fern-renderer-nerdfont"]
+	path = pack/file_manager/start/fern-renderer-nerdfont
+	url = https://github.com/lambdalisue/fern-renderer-nerdfont.vim
+[submodule "pack/file-manager/opt/fern-git-status"]
+	path = pack/file_manager/start/fern-git-status
+	url = https://github.com/lambdalisue/fern-git-status.vim
+[submodule "pack/file-manager/start/FixCursorHold"]
+	path = pack/file_manager/start/FixCursorHold
+	url = https://github.com/antoinemadec/FixCursorHold.nvim
+[submodule "pack/file-manager/start/fern-hijack"]
+	path = pack/file_manager/start/fern-hijack
+	url = https://github.com/lambdalisue/fern-hijack.vim
+[submodule "pack/file_manager/start/nerdfont"]
+	path = pack/file_manager/start/nerdfont
+	url = https://github.com/lambdalisue/nerdfont.vim
+[submodule "pack/web/opt/css"]
+	path = pack/web/opt/css
+	url = https://github.com/hail2u/vim-css3-syntax
+[submodule "pack/web/opt/typescript"]
+	path = pack/web/opt/typescript
+	url = https://github.com/HerringtonDarkholme/yats.vim
+[submodule "pack/web/opt/firestore"]
+	path = pack/web/opt/firestore
+	url = https://github.com/delphinus/vim-firestore
+[submodule "pack/web/opt/markdown"]
+	path = pack/web/opt/markdown
+	url = https://github.com/plasticboy/vim-markdown
+[submodule "pack/file_manager/start/fern-hijack"]
+	path = pack/file_manager/start/fern-hijack
+	url = https://github.com/lambdalisue/fern-hijack.vim
+[submodule "pack/autocomplete/start/pack/autocomplete/start/asyncomplete-tabnine"]
+	path = pack/autocomplete/start/pack/autocomplete/start/asyncomplete-tabnine
+	url = https://github.com/kitagry/asyncomplete-tabnine.vim
+[submodule "pack/autocomplete/start/pack/autocomplete/start/asyncomplete"]
+	path = pack/autocomplete/start/pack/autocomplete/start/asyncomplete
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "pack/autocomplete/start/pack/autocomplete/start/asyncomplete-file"]
+	path = pack/autocomplete/start/pack/autocomplete/start/asyncomplete-file
+	url = https://github.com/prabirshrestha/asyncomplete-file.vim
+[submodule "pack/autocomplete/start/pack/autocomplete/start/asyncomplete-emmet"]
+	path = pack/autocomplete/start/pack/autocomplete/start/asyncomplete-emmet
+	url = https://github.com/prabirshrestha/asyncomplete-emmet.vim
+[submodule "pack/autocomplete/start/pack/autocomplete/start/asyncomplete-lsp"]
+	path = pack/autocomplete/start/pack/autocomplete/start/asyncomplete-lsp
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule "pack/pack/autocomplete/start/asyncomplete-tabnine"]
+	path = pack/autocomplete/start/asyncomplete-tabnine
+	url = https://github.com/kitagry/asyncomplete-tabnine.vim
+[submodule "pack/pack/autocomplete/start/asyncomplete-lsp"]
+	path = pack/autocomplete/start/asyncomplete-lsp
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule "pack/pack/autocomplete/start/emmet"]
+	path = pack/autocomplete/start/emmet
+	url = https://github.com/mattn/emmet-vim
+[submodule "pack/pack/autocomplete/start/asyncomplete"]
+	path = pack/autocomplete/start/asyncomplete
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "pack/pack/autocomplete/start/asyncomplete-emmet"]
+	path = pack/autocomplete/start/asyncomplete-emmet
+	url = https://github.com/prabirshrestha/asyncomplete-emmet.vim
+[submodule "pack/pack/autocomplete/start/asyncomplete-file"]
+	path = pack/autocomplete/start/asyncomplete-file
+	url = https://github.com/prabirshrestha/asyncomplete-file.vim
+[submodule "pack/nix/opt/nix"]
+	path = pack/nix/start/nix
+	url = https://github.com/LnL7/vim-nix
+[submodule "pack/commands/start/open-browser"]
+	path = pack/commands/start/open-browser
+	url = https://github.com/tyru/open-browser.vim
+[submodule "pack/commands/start/neoformat"]
+	path = pack/commands/start/neoformat
+	url = https://github.com/sbdchd/neoformat
+[submodule "pack/golang/opt/go-import"]
+	path = pack/golang/opt/go-import
+	url = https://github.com/mattn/vim-goimports
+[submodule "pack/autocomplete/start/asyncomplete-omni"]
+	path = pack/autocomplete/start/asyncomplete-omni
+	url = https://github.com/yami-beta/asyncomplete-omni.vim

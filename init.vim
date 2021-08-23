@@ -9,6 +9,7 @@ scriptencoding utf-8
 " Editor
 " ======
 set number
+set cursorline
 set ambiwidth=double
 set scl=yes
 
@@ -26,7 +27,8 @@ set autoindent
 set backspace=indent,eol,start
 
 filetype plugin indent on
-syntax on
+syntax enable
+colorscheme kalaclista
 
 " Key bindings
 " ============

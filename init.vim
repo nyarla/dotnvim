@@ -118,6 +118,7 @@ endfunction
 augroup init-fern
   autocmd!
   autocmd FileType fern call s:init_fern()
+  autocmd FileType fern call glyph_palette#apply()
 augroup END
 
 function! s:open_fern(...)

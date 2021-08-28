@@ -79,3 +79,6 @@
 [submodule "pack/autocomplete/start/asyncomplete-omni"]
 	path = pack/autocomplete/start/asyncomplete-omni
 	url = https://github.com/yami-beta/asyncomplete-omni.vim
+[submodule "pack/file_manager/start/glyph-palette"]
+	path = pack/file_manager/start/glyph-palette
+	url = https://github.com/lambdalisue/glyph-palette.vim

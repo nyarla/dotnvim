@@ -179,7 +179,7 @@ augroup END
 " golang
 " ------
 function! s:init_golang()
-  packadd golang
+  packadd go-import
 endfunction
 
 augroup init-golang
@@ -187,21 +187,12 @@ augroup init-golang
   autocmd FileType go call s:init_golang() 
 augroup END
 
-" todo
-" ----
-function! s:init_todo()
-  packadd todo
-endfunction
-
-augroup init-todo
-  autocmd!
-  autocmd BufRead,BufNewFile *.todo.md call s:init_todo()
-augroup END
-
 " web
 " ---
 function! s:init_web()
-  packadd web
+  packadd css
+  packadd markdown
+  packadd typescript
 endfunction
 
 augroup init-web
@@ -217,5 +208,5 @@ let g:vim_markdown_no_default_key_mappings = 1
 " windows
 " -------
 if has('win32') || has('win64')
-  packadd windows
+  packadd cmdswitch
 endif

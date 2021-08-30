@@ -44,6 +44,12 @@ augroup END
 " Plugins
 " =======
 
+" lazy loader
+" ------------
+function! s:lazy_load(pkg)
+  exec "packadd! " . a:pkg
+endfunction
+
 " asyncomplete
 " ------------
 inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -178,28 +184,18 @@ augroup END
 
 " golang
 " ------
-function! s:init_golang()
-  packadd go-import
-endfunction
-
 augroup init-golang
   autocmd!
-  autocmd FileType go call s:init_golang() 
+  autocmd FileType go call s:lazy_load("go-import")
 augroup END
 
 " web
 " ---
-function! s:init_web()
-  packadd css
-  packadd markdown
-  packadd typescript
-endfunction
-
 augroup init-web
   autocmd!
-  autocmd FileType css call s:init_web()
-  autocmd FileType markdown call s:init_web()
-  autocmd FileType typescript call s:init_web()
+  autocmd FileType css call s:lazy_load("css")
+  autocmd FileType markdown call s:lazy_load("markdown")
+  autocmd FileType typescript call s:lazy_load("typescript")
 augroup END
 
 let g:vim_markdown_folding_disabled = 1
@@ -208,5 +204,5 @@ let g:vim_markdown_no_default_key_mappings = 1
 " windows
 " -------
 if has('win32') || has('win64')
-  packadd cmdswitch
+  packadd! cmdswitch
 endif

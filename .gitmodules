@@ -17,16 +17,16 @@
 	path = pack/file_manager/start/nerdfont
 	url = https://github.com/lambdalisue/nerdfont.vim
 [submodule "pack/web/opt/css"]
-	path = pack/web/opt/css
+	path = pack/development/opt/css
 	url = https://github.com/hail2u/vim-css3-syntax
 [submodule "pack/web/opt/typescript"]
-	path = pack/web/opt/typescript
+	path = pack/development/opt/typescript
 	url = https://github.com/HerringtonDarkholme/yats.vim
 [submodule "pack/web/opt/firestore"]
-	path = pack/web/opt/firestore
+	path = pack/development/opt/firestore
 	url = https://github.com/delphinus/vim-firestore
 [submodule "pack/web/opt/markdown"]
-	path = pack/web/opt/markdown
+	path = pack/development/opt/markdown
 	url = https://github.com/plasticboy/vim-markdown
 [submodule "pack/file_manager/start/fern-hijack"]
 	path = pack/file_manager/start/fern-hijack
@@ -65,7 +65,7 @@
 	path = pack/autocomplete/start/asyncomplete-file
 	url = https://github.com/prabirshrestha/asyncomplete-file.vim
 [submodule "pack/nix/opt/nix"]
-	path = pack/nix/start/nix
+	path = pack/development/start/nix
 	url = https://github.com/LnL7/vim-nix
 [submodule "pack/commands/start/open-browser"]
 	path = pack/commands/start/open-browser
@@ -74,7 +74,7 @@
 	path = pack/commands/start/neoformat
 	url = https://github.com/sbdchd/neoformat
 [submodule "pack/golang/opt/go-import"]
-	path = pack/golang/opt/go-import
+	path = pack/development/opt/go-import
 	url = https://github.com/mattn/vim-goimports
 [submodule "pack/autocomplete/start/asyncomplete-omni"]
 	path = pack/autocomplete/start/asyncomplete-omni
@@ -82,3 +82,6 @@
 [submodule "pack/file_manager/start/glyph-palette"]
 	path = pack/file_manager/start/glyph-palette
 	url = https://github.com/lambdalisue/glyph-palette.vim
+[submodule "pack/text/opt/textlint"]
+	path = pack/text/start/textlint
+	url = https://github.com/heavenshell/vim-textlint

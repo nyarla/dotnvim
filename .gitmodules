@@ -82,3 +82,6 @@
 [submodule "pack/file_manager/start/glyph-palette"]
 	path = pack/file_manager/start/glyph-palette
 	url = https://github.com/lambdalisue/glyph-palette.vim
+[submodule "pack/text/opt/textlint"]
+	path = pack/text/start/textlint
+	url = https://github.com/heavenshell/vim-textlint

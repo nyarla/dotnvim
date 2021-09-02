@@ -107,40 +107,6 @@ augroup init-autocomplete
 
 augroup END
 
-" file_manager
-" ------------
-function! s:init_fern()
-  nmap <buffer><expr>
-    \ <Plug>(fern-my-open-or-expand-or-collapse)
-    \ fern#smart#leaf(
-    \   "<Plug>(fern-action-open)",
-    \   "<Plug>(fern-action-expand)",
-    \   "<Plug>(fern-action-collapse)",
-    \ )
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-or-expand-or-collapse)
-  nmap <buffer> d <Plug>(fern-action-remove) 
-endfunction
-
-augroup init-fern
-  autocmd!
-  autocmd FileType fern call s:init_fern()
-  autocmd FileType fern call glyph_palette#apply()
-augroup END
-
-function! s:open_fern(...)
-  let dir = "."
-  
-  if a:0 == 1
-    let dir = a:1 
-  endif
-
-  exec "Fern " . dir . " -drawer"
-endfunction
-
-command -nargs=? -complete=file Filetree call s:open_fern(<f-args>)
-
-let g:fern#renderer = "nerdfont"
-
 " commands
 " --------
 let g:netrw_nogx = 1
@@ -182,24 +148,53 @@ augroup auto-format
   autocmd BufWritePre cpanfile undojoin | Neoformat
 augroup END
 
-" golang
-" ------
-augroup init-golang
-  autocmd!
-  autocmd FileType go call s:lazy_load("go-import")
-augroup END
-
-" web
-" ---
-augroup init-web
+" development
+" -----------
+augroup init-development
   autocmd!
   autocmd FileType css call s:lazy_load("css")
   autocmd FileType markdown call s:lazy_load("markdown")
   autocmd FileType typescript call s:lazy_load("typescript")
+  autocmd FileType go call s:lazy_load("go-import")
 augroup END
 
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
+
+" file_manager
+" ------------
+function! s:init_fern()
+  nmap <buffer><expr>
+    \ <Plug>(fern-my-open-or-expand-or-collapse)
+    \ fern#smart#leaf(
+    \   "<Plug>(fern-action-open)",
+    \   "<Plug>(fern-action-expand)",
+    \   "<Plug>(fern-action-collapse)",
+    \ )
+  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-or-expand-or-collapse)
+  nmap <buffer> d <Plug>(fern-action-remove) 
+endfunction
+
+augroup init-fern
+  autocmd!
+  autocmd FileType fern call s:init_fern()
+  autocmd FileType fern call glyph_palette#apply()
+augroup END
+
+
+function! s:open_fern(...)
+  let dir = "."
+  
+  if a:0 == 1
+    let dir = a:1 
+  endif
+
+  exec "Fern " . dir . " -drawer"
+endfunction
+
+command -nargs=? -complete=file Filetree call s:open_fern(<f-args>)
+
+let g:fern#renderer = "nerdfont"
 
 " windows
 " -------

@@ -205,4 +205,10 @@ let g:vim_markdown_no_default_key_mappings = 1
 " -------
 if has('win32') || has('win64')
   packadd! cmdswitch
+
+  if argc() == 0
+    lcd ~/Downloads
+  elseif argc() == 1
+    exec "lcd " . fnamemodify(argv()[0], ':p:h') 
+  endif
 endif

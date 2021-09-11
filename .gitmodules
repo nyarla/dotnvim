@@ -85,3 +85,9 @@
 [submodule "pack/text/opt/textlint"]
 	path = pack/text/start/textlint
 	url = https://github.com/heavenshell/vim-textlint
+[submodule "pack/autocomplete/start/lsp-settings"]
+	path = pack/autocomplete/start/lsp-settings
+	url = https://github.com/mattn/vim-lsp-settings
+[submodule "pack/autocomplete/start/lsp"]
+	path = pack/autocomplete/start/lsp
+	url = https://github.com/prabirshrestha/vim-lsp

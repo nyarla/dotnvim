@@ -1,36 +1,6 @@
-[submodule "pack/file-manager/opt/fern"]
-	path = pack/file_manager/start/fern
-	url = https://github.com/lambdalisue/fern.vim
-[submodule "pack/file-manager/opt/fern-renderer-nerdfont"]
-	path = pack/file_manager/start/fern-renderer-nerdfont
-	url = https://github.com/lambdalisue/fern-renderer-nerdfont.vim
-[submodule "pack/file-manager/opt/fern-git-status"]
-	path = pack/file_manager/start/fern-git-status
-	url = https://github.com/lambdalisue/fern-git-status.vim
-[submodule "pack/file-manager/start/FixCursorHold"]
-	path = pack/file_manager/start/FixCursorHold
-	url = https://github.com/antoinemadec/FixCursorHold.nvim
-[submodule "pack/file-manager/start/fern-hijack"]
-	path = pack/file_manager/start/fern-hijack
-	url = https://github.com/lambdalisue/fern-hijack.vim
-[submodule "pack/file_manager/start/nerdfont"]
-	path = pack/file_manager/start/nerdfont
-	url = https://github.com/lambdalisue/nerdfont.vim
-[submodule "pack/web/opt/css"]
-	path = pack/development/opt/css
-	url = https://github.com/hail2u/vim-css3-syntax
-[submodule "pack/web/opt/typescript"]
-	path = pack/development/opt/typescript
-	url = https://github.com/HerringtonDarkholme/yats.vim
 [submodule "pack/web/opt/firestore"]
 	path = pack/development/opt/firestore
 	url = https://github.com/delphinus/vim-firestore
-[submodule "pack/web/opt/markdown"]
-	path = pack/development/opt/markdown
-	url = https://github.com/plasticboy/vim-markdown
-[submodule "pack/file_manager/start/fern-hijack"]
-	path = pack/file_manager/start/fern-hijack
-	url = https://github.com/lambdalisue/fern-hijack.vim
 [submodule "pack/autocomplete/start/pack/autocomplete/start/asyncomplete-tabnine"]
 	path = pack/autocomplete/start/pack/autocomplete/start/asyncomplete-tabnine
 	url = https://github.com/kitagry/asyncomplete-tabnine.vim
@@ -46,27 +16,6 @@
 [submodule "pack/autocomplete/start/pack/autocomplete/start/asyncomplete-lsp"]
 	path = pack/autocomplete/start/pack/autocomplete/start/asyncomplete-lsp
 	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
-[submodule "pack/pack/autocomplete/start/asyncomplete-tabnine"]
-	path = pack/autocomplete/start/asyncomplete-tabnine
-	url = https://github.com/kitagry/asyncomplete-tabnine.vim
-[submodule "pack/pack/autocomplete/start/asyncomplete-lsp"]
-	path = pack/autocomplete/start/asyncomplete-lsp
-	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
-[submodule "pack/pack/autocomplete/start/emmet"]
-	path = pack/autocomplete/start/emmet
-	url = https://github.com/mattn/emmet-vim
-[submodule "pack/pack/autocomplete/start/asyncomplete"]
-	path = pack/autocomplete/start/asyncomplete
-	url = https://github.com/prabirshrestha/asyncomplete.vim
-[submodule "pack/pack/autocomplete/start/asyncomplete-emmet"]
-	path = pack/autocomplete/start/asyncomplete-emmet
-	url = https://github.com/prabirshrestha/asyncomplete-emmet.vim
-[submodule "pack/pack/autocomplete/start/asyncomplete-file"]
-	path = pack/autocomplete/start/asyncomplete-file
-	url = https://github.com/prabirshrestha/asyncomplete-file.vim
-[submodule "pack/nix/opt/nix"]
-	path = pack/development/start/nix
-	url = https://github.com/LnL7/vim-nix
 [submodule "pack/commands/start/open-browser"]
 	path = pack/commands/start/open-browser
 	url = https://github.com/tyru/open-browser.vim
@@ -76,18 +25,51 @@
 [submodule "pack/golang/opt/go-import"]
 	path = pack/development/opt/go-import
 	url = https://github.com/mattn/vim-goimports
-[submodule "pack/autocomplete/start/asyncomplete-omni"]
-	path = pack/autocomplete/start/asyncomplete-omni
-	url = https://github.com/yami-beta/asyncomplete-omni.vim
-[submodule "pack/file_manager/start/glyph-palette"]
-	path = pack/file_manager/start/glyph-palette
-	url = https://github.com/lambdalisue/glyph-palette.vim
 [submodule "pack/text/opt/textlint"]
 	path = pack/text/start/textlint
 	url = https://github.com/heavenshell/vim-textlint
-[submodule "pack/autocomplete/start/lsp-settings"]
-	path = pack/autocomplete/start/lsp-settings
-	url = https://github.com/mattn/vim-lsp-settings
-[submodule "pack/autocomplete/start/lsp"]
-	path = pack/autocomplete/start/lsp
-	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "pack/lsp/start/nvim-lspconfig"]
+	path = pack/lsp/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "pack/lsp/start/nvim-lsp-installer"]
+	path = pack/lsp/start/nvim-lsp-installer
+	url = https://github.com/williamboman/nvim-lsp-installer
+[submodule "pack/lsp/start/nvim-cmp"]
+	path = pack/lsp/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "pack/lsp/start/cmp-nvim-lsp"]
+	path = pack/lsp/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "pack/lsp/start/cmp-buffer"]
+	path = pack/lsp/start/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer
+[submodule "pack/development/start/tree-sitter"]
+	path = pack/development/start/tree-sitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "pack/lsp/start/cmp-path"]
+	path = pack/lsp/start/cmp-path
+	url = https://github.com/hrsh7th/cmp-path
+[submodule "pack/lsp/start/cmp-tabnine"]
+	path = pack/lsp/start/cmp-tabnine
+	url = https://github.com/tzachar/cmp-tabnine
+[submodule "pack/lsp/start/cmp-treesitter"]
+	path = pack/lsp/start/cmp-treesitter
+	url = https://github.com/ray-x/cmp-treesitter
+[submodule "pack/lsp/start/lspkind-nvim"]
+	path = pack/lsp/start/lspkind-nvim
+	url = https://github.com/onsails/lspkind-nvim
+[submodule "pack/file_manager/start/nvim-tree"]
+	path = pack/file_manager/start/nvim-tree
+	url = https://github.com/kyazdani42/nvim-tree.lua
+[submodule "pack/file_manager/start/nvim-web-devicons"]
+	path = pack/file_manager/start/nvim-web-devicons
+	url = https://github.com/kyazdani42/nvim-web-devicons
+[submodule "pack/lsp/start/vim-vsnip"]
+	path = pack/lsp/start/vim-vsnip
+	url = https://github.com/hrsh7th/vim-vsnip
+[submodule "pack/lsp/start/cmp-vsnip"]
+	path = pack/lsp/start/cmp-vsnip
+	url = https://github.com/hrsh7th/cmp-vsnip
+[submodule "pack/lsp/start/vim-vsnip-integ"]
+	path = pack/lsp/start/vim-vsnip-integ
+	url = https://github.com/hrsh7th/vim-vsnip-integ

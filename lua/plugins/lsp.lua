@@ -16,7 +16,10 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
     ["<S-Tab>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}),
     ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
-    ["<Left>"] = cmp.mapping.close()
+    ["<Left>"] = cmp.mapping.close(),
+    ["<Right>"] = cmp.mapping.close(),
+    ["<Up>"] = cmp.mapping.close(),
+    ["<Down>"] = cmp.mapping.close()
   },
   sources = {
     {name = "nvim_lsp"},

@@ -1,13 +1,7 @@
 syn match todoMarkdownPrefix /^\s*-\s*/ contained containedin=todoMarkdownTaskItem,todoMarkdownDoneItem,todoMarkdownLabel
 syn match todoMarkdownCheckBox /\[ \]/ contained containedin=todoMarkdownTaskItem,todoMarkdownDoneItem
 syn match todoMarkdownCheckedBox /\[x\]/ contained containedin=todoMarkdownTaskItem,todoMarkdownDoneItem
-syn match todoMarkdownDate /!(\d\{4}-\d\{2}-\d\{2})/ contained containedin=todoMarkdownTaskItem,todoMarkdownDoneItem,todoMarkdownListItem
-syn match todoMarkdownAM1 /午前/ contained containedin=todoMarkdownListItem
-syn match todoMarkdownAM2 /正午/ contained containedin=todoMarkdownListItem
-syn match todoMarkdownPM1 /午後/ contained containedin=todoMarkdownListItem
-syn match todoMarkdownPM2 /夕方/ contained containedin=todoMarkdownListItem
-syn match todoMarkdownDAY /一日/ contained containedin=todoMarkdownListItem
-
+syn match todoMarkdownDate /!(\d\{4}-\w\{2}-\w\{2})/ contained containedin=todoMarkdownTaskItem,todoMarkdownDoneItem,todoMarkdownListItem
 syn match todoMarkdownLabel /^- [A-Z0-9\-]\+/ contained containedin=todoMarkdownTaskItem,todoMarkdownDoneItem,todoMarkdownListItem 
 
 syn match todoMarkdownDoneItem /\(\s*\)-\s*\[x\]\s*[^\n]\+\n\(  \1\s*-[^\n]\+\n\)*/
